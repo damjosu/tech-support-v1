@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Random;
 /**
@@ -11,6 +12,7 @@ public class Responder
 {
     private Random rnd;
     private ArrayList<String> responses;
+    private HashMap<String, String> faq;
     /**
      * Construct a Responder - nothing to do
      */
@@ -23,16 +25,25 @@ public class Responder
         responses.add("keep on");
         responses.add("go on");
         responses.add("I see");
+        faq = new HashMap<>();
+        faq.put("Hi", "Hello");
+        faq.put("How", "you should google it.");
+        faq.put("finish", "Good work");
+        faq.put("Bye", "Bye");
     }
 
     /**
      * Generate a response.
      * @return   A string that should be displayed as the response
      */
-    public String generateResponse()
+    public String generateResponse(String answer)
     {
         int aleatorio = rnd.nextInt(5);
         String response = responses.get(aleatorio);
+        if(faq.get(answer) != null)
+        {
+            response = faq.get(answer);
+        }
         return response;
     }
 }

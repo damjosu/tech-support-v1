@@ -41,9 +41,10 @@ public class SupportSystem
 
             if(input.equals("bye")) {
                 finished = true;
-            }
-            else {
-                String response = responder.generateResponse();
+            }            
+            else
+            {
+                String response = responder.generateResponse(input);
                 System.out.println(response);
             }
         }
