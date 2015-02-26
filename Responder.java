@@ -38,11 +38,15 @@ public class Responder
      */
     public String generateResponse(String answer)
     {
-        int aleatorio = rnd.nextInt(5);
-        String response = responses.get(aleatorio);
+        String response;
         if(faq.get(answer) != null)
         {
             response = faq.get(answer);
+        }
+        else
+        {
+            int aleatorio = rnd.nextInt(5);
+            response = responses.get(aleatorio);
         }
         return response;
     }
