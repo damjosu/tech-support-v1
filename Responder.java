@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,7 +27,7 @@ public class Responder
         responses.add("go on");
         responses.add("I see");
         faq = new HashMap<>();
-        faq.put("Hi", "Hello");
+        faq.put("Hola", "Hello");
         faq.put("How", "you should google it.");
         faq.put("finish", "Good work");
         faq.put("Bye", "Bye");
@@ -36,15 +37,21 @@ public class Responder
      * Generate a response.
      * @return   A string that should be displayed as the response
      */
-    public String generateResponse(String answer)
+    public String generateResponse(HashSet<String> answers)
     {
-        String response;
-        if(faq.get(answer) != null)
-        {
-            response = faq.get(answer);
+        String response = null;
+        boolean existe = false;
+        int i = 0;
+        String found = null;
+
+        for (String answer : answers) {
+            if (found == null && (faq.containsKey(answer))) {
+                found = faq.get(answer);
+                existe = true;
+            } 
         }
-        else
-        {
+        response = found;
+        if (!existe) {
             int aleatorio = rnd.nextInt(5);
             response = responses.get(aleatorio);
         }

@@ -45,7 +45,7 @@ public class SupportSystem
             else
             {
                 String response = responder.generateResponse(input);
-                System.out.println(response);
+                System.out.println(response);        
             }
         }
         printGoodbye();
